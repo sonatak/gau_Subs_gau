@@ -1,0 +1,50 @@
+Interface to substract ouputs from two Gaussian runs 
+==============================================================
+Javier Cerezo, javier.cerezo@uam.es
+
+Description
+------------
+This interface is intended to be used as external job within
+Gaussian, and it provides the energy, gradient and Hessian
+obtained by substracting the corresponding elements from two 
+Gaussian jobs.
+
+The interface consists of one bash script (gau_Subs_gau.sh)
+that manages the two Gaussian jobs and two utilities (gau2gau-in, 
+gau2gau-out) called by the script to exchange data between the
+main Gaussian call and the two jobs to substract.
+
+The interface provides the substracted energies, gradients and
+Hessians to be used as part of a Gaussian run, thour the external
+keyword:
+
+# external="gau_Subs_gau.sh job1_rs job2_rs"
+
+where job1_cl and job2_cl are files containing the route section
+for each job.
+
+
+Installation
+------------
+The utilities are written in Fortran, thus a valid compiler for such 
+language is needed (e.g., gfotran). 
+The compilation can be performed from source/ folder using the simple
+Makefile provided. Concretely typing:
+
+ make                         - Compile the code in /source
+ make install BINDIR=~/bin    - Install the binaries in ~/bin. Any other
+                                path can be specified (but one MUST be 
+                                given)
+ make clean                   - Delete binaries
+
+
+Notes about the External keyword
+---------------------------------
+The External program cannot be used for geometry optimizations wit Microiterations 
+There is however, a more relevant issue that is probably connected to the above 
+limitaion: Gasussian ignores the modredundant section (e.g., to perform a constrained 
+minimization) with an External method by default. The modredundant section can be used 
+adding "Opt(NoMicro)" to the route section. If any other job has conflicts with Micro-
+iteraction, one can also add "Geom(NoMicro)".
+
+
