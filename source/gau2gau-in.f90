@@ -1,7 +1,7 @@
 program gau2gau_in
 
     !-------------------------------------------------
-    ! This source is part of gau_Subs_gau super interface
+    ! This source is part of gau_Subs_gau interface
     !
     ! Description:
     ! ------------
