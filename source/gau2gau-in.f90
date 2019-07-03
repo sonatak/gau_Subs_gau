@@ -8,7 +8,7 @@ program gau2gau_in
     ! Reads input data file from Gaussian caller and
     ! generates a Gaussian input. 
     !
-    ! The progra expects to be called as:
+    ! The program expects to be called as:
     !
     !  gau2gau_in <input_data_fn> <route_section_fn> <outfile_label>
     !
